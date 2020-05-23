@@ -78,6 +78,7 @@ public class PlayerInteract implements Listener {
                             player.playSound(player.getLocation(), Sound.ITEM_ARMOR_EQUIP_ELYTRA, 2, 0);
                         }
                         break;
+                    //For non right clicks
                     default:
                         break;
                 }
