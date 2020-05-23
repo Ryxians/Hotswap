@@ -1,0 +1,22 @@
+name: Hotswap
+version: ${project.version}
+main: homebrew.hotswap.Hotswap
+api-version: 1.13
+authors: [Ryxian]
+description: Allowing easy hotswapping of items.
+permissions:
+      hotswap.helmet:
+        default: true
+        description: Hotswap with the helmet
+      hotswap.chest:
+        default: true
+        description: Hotswap chestplates and elytra
+      hotswap.leggings:
+        default: true
+        description: Hotswap leggings
+      hotswap.boots:
+        default: true
+        description: Hotswap boots
+      hotswap.elytra:
+        default: true
+        description: elytra only

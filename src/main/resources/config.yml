@@ -1,0 +1,9 @@
+# Hotswap:                                                #
+# ------------------------------------------------------- #
+# If chestplate is disabled, elytra will also be disabled #
+swap:
+  helmet: true
+  chestplate: true
+  leggings: true
+  boots: true
+  elytra: true
