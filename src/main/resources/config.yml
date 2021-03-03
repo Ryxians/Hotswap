@@ -7,3 +7,20 @@ swap:
   leggings: true
   boots: true
   elytra: true
+
+# Container Prevention                                #
+# --------------------------------------------------- #
+# If enabled, Hotswap will override chests/containers #
+container-swap: false
+
+# Multiple World Support                                           #
+# ---------------------------------------------------------------- #
+# If all is set to false, Hotswap will only work in default worlds #
+worlds:
+  all: true
+
+
+
+# DO NOT CHANGE #
+# ------------- #
+first: true
