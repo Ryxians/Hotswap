@@ -9,7 +9,9 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.permissions.Permission;
@@ -55,15 +57,15 @@ public class PlayerInteract implements Listener {
             if (evt.getClickedBlock().getState() instanceof Container)
                 doSwap = false;
 
+        // Check if the event is for the main hand
+        if (evt.getHand().equals(EquipmentSlot.OFF_HAND)) doSwap = false;
+
         // On right click, swap
         if (evt.useItemInHand().equals(Event.Result.DEFAULT) && doSwap) {
-            switch (evt.getAction()) {
-                case RIGHT_CLICK_AIR:
-                case RIGHT_CLICK_BLOCK:
-                    toSwap(player);
-                    break;
-                default:
-                    break;
+            if (evt.getAction().equals(Action.RIGHT_CLICK_AIR)) {
+                toSwap(player);
+            } else if (evt.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+                toSwap(player);
             }
         }
 
