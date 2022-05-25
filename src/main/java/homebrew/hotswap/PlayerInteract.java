@@ -50,26 +50,34 @@ public class PlayerInteract implements Listener {
     public void playerInteract(PlayerInteractEvent evt) {
         event = evt;
         Player player = evt.getPlayer();
+        EquipmentSlot hand = evt.getHand();
         boolean doSwap = true;
+
+
+        if (hand == null) return;
 
         // Check if they used a container
         if (evt.getClickedBlock() != null && container)
             if (evt.getClickedBlock().getState() instanceof Container)
-                doSwap = false;
+                return;
 
         // Check if the event is for the main hand
-        if (evt.getHand().equals(EquipmentSlot.OFF_HAND)) doSwap = false;
+        if (evt.getHand().equals(EquipmentSlot.OFF_HAND)) return;
 
         // On right click, swap
         if (evt.useItemInHand().equals(Event.Result.DEFAULT) && doSwap) {
             if (evt.getAction().equals(Action.RIGHT_CLICK_AIR)) {
                 toSwap(player);
             } else if (evt.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-                toSwap(player);
+                // When right clicking a block, only swap if allowed
+                if (evt.useInteractedBlock().equals(Event.Result.ALLOW))
+                    toSwap(player);
             }
         }
 
     }
+
+
 
     // Gets the item in the player's hand and swaps it to the correct location
     public void toSwap(Player player) {
